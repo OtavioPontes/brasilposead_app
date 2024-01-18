@@ -1,7 +1,7 @@
-name: brasilposead_app
+name: brasilposead
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' 
 
 #
 version: 1.0.0+1
@@ -28,7 +28,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  assets:
+  - assets/
 
   uses-material-design: true
+
 
   

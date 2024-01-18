@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Brasilposead App</string>
+	<string>BrasilPos EaD</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>brasilposead_app</string>
+	<string>brasilposead</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -46,10 +46,8 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>The app requires access to the camera to enable influencers to take photos and record videos explaining the reach of their influencer network. This information is crucial for companies to select the most suitable candidate for a job offer. The camera access for companies allows them to record job offers in the form of images or videos, which influencers can evaluate to decide whether to apply for the job</string>
+	<string>The app requires access to the camera to enable video conference</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>The app requires access to the microphone to enable influencers to record videos explaining the reach of their influencer network. This information is crucial for companies to select the most suitable candidate for a job offer. The microphone access for companies allows them to record job offers in the form of videos, which influencers can evaluate to decide whether to apply for the job</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The app uses the photo library to get images for user profile</string>
+	<string>The app requires access to the camera to enable video conference</string>
 </dict>
 </plist>

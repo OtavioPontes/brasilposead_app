@@ -1,4 +1,4 @@
-package com.example.brasilposead_app
+package com.londonsim.brasilposead
 
 import io.flutter.embedding.android.FlutterActivity
 

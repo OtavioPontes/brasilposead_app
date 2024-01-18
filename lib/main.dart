@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Brasil Pos Ead',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
@@ -41,6 +42,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late WebViewController controller;
+
+  String lastUrl = "";
 
   void addFileSelectionListener() async {
     if (Platform.isAndroid) {
@@ -79,19 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {
-            // Update loading bar.
-          },
+          onUrlChange: (change) {},
+          onProgress: (int progress) {},
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            /*  if (request.url.contains("bigbluebuttonbn/bbb_view")) {
-              launchUrl(Uri.parse(request.url));
-              return NavigationDecision.prevent;
-            } else {
-              return NavigationDecision.navigate;
-            } */
+            lastUrl = request.url;
             return NavigationDecision.navigate;
           },
         ),
@@ -104,6 +101,105 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () => controller.goBack(),
+          ),
+        ),
+        title: const Text(
+          "BrasilPós EaD",
+          style: TextStyle(
+            color: Color(0xFF006400),
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        backgroundColor: const Color(0xFFFACC33),
+        centerTitle: true,
+      ),
+      endDrawer: Drawer(
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Image.asset(
+                "assets/BRPOS_bg.png",
+              ),
+            ),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://www.brasilposead.com.br"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://www.brasilposead.com.br";
+                }),
+              title: const Text("Plataforma EaD"),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://brasilpos.com.br"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://brasilpos.com.br";
+                }),
+              title: const Text("Site BrasilPós"),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://brasilposead.com.br/senha"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://www.brasilposead.com.br/senha";
+                }),
+              title: const Text("Recuperar Senha"),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://brasilposead.com.br/normas"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://www.brasilposead.com.br/normas";
+                }),
+              title: const Text("Normas e Procedimentos"),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://brasilposead.com.br/privacy"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://www.brasilposead.com.br/privacy";
+                }),
+              title: const Text("Política de Privacidade"),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://brasilposead.com.br/suporte"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://www.brasilposead.com.br/suporte";
+                }),
+              title: const Text("Suporte"),
+            ),
+            const Divider(),
+            ListTile(
+              onTap: () => controller
+                ..loadRequest(Uri.parse("https://brasilposead.com.br/sobre"))
+                    .then((value) {
+                  Navigator.pop(context);
+                  return lastUrl = "https://www.brasilposead.com.br/sobre";
+                }),
+              title: const Text("Sobre"),
+            ),
+            const Divider(),
+          ],
+        ),
+      ),
       body: SafeArea(child: WebViewWidget(controller: controller)),
     );
   }
