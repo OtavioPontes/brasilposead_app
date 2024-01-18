@@ -1,4 +1,4 @@
-package com.londonsim.brasilposead
+package com.brasilposead
 
 import io.flutter.embedding.android.FlutterActivity
 
