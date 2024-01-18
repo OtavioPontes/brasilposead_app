@@ -10,7 +10,7 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Permission.camera.request();
-  // await Permission.photos.request();
+  await Permission.photos.request();
   await Permission.microphone.request();
 
   runApp(const MyApp());
